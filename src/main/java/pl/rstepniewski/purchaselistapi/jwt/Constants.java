@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class Constants {
     private long tokenValidity;
     private String secureKeyAlgorithm;
+    private int secureKeyBitLength;
 
     public long getTokenValidity() {
         return tokenValidity;
@@ -23,5 +24,13 @@ public class Constants {
 
     public void setSecureKeyAlgorithm(String secureKeyAlgorithm) {
         this.secureKeyAlgorithm = secureKeyAlgorithm;
+    }
+
+    public int getSecureKeyBitLength() {
+        return secureKeyBitLength;
+    }
+
+    public void setSecureKeyBitLength(int secureKeyBitLength) {
+        this.secureKeyBitLength = secureKeyBitLength;
     }
 }

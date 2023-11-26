@@ -11,4 +11,5 @@ spring:
 app:
   jwt:
     secureKeyAlgorithm: HmacSHA512
+    secureKeyBitLength: 512
     tokenValidity: 7200000

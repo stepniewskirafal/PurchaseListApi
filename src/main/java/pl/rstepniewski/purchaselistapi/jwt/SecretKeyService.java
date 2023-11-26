@@ -1,6 +1,7 @@
 package pl.rstepniewski.purchaselistapi.jwt;
 
 import org.springframework.stereotype.Service;
+import pl.rstepniewski.purchaselistapi.exception.WrongAlgorithmException;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -21,10 +22,10 @@ public class SecretKeyService {
         try {
             keyGen = KeyGenerator.getInstance(constants.getSecureKeyAlgorithm());
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            throw new WrongAlgorithmException("Wrong Algorithm type for SecretKey used in the config. Error stack: " + e.getMessage() );
         }
-        SecureRandom random = new SecureRandom();
-        keyGen.init(512, random);  // 512-bit key for HS512
+        final SecureRandom random = new SecureRandom();
+        keyGen.init(constants.getSecureKeyBitLength(), random);
         return keyGen.generateKey();
 
     }

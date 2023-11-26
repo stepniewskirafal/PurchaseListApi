@@ -31,15 +31,15 @@ public class JwtTokenService {
     }
 
     private String jwtsBuilder(User user) {
-        long timeStamp = Instant.now().toEpochMilli();
+        final long timeStamp = Instant.now().toEpochMilli();
 
-        Map<String, Object> claims = new HashMap<>();
+        final Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId());
         claims.put("email", user.getEmail());
         claims.put("firstName", user.getFirstName());
         claims.put("lastName", user.getLastName());
 
-        SecretKey key = secretKeyService.generateSecretKey();
+        final SecretKey key = secretKeyService.generateSecretKey();
 
         return Jwts.builder()
                 .claims(claims)
