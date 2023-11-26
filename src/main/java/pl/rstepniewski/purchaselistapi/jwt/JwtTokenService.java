@@ -1,15 +1,11 @@
 package pl.rstepniewski.purchaselistapi.jwt;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.rstepniewski.purchaselistapi.domain.User;
-import static io.jsonwebtoken.JwsHeader.KEY_ID;
 
 import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,14 +15,17 @@ import java.time.Instant;
 public class JwtTokenService {
 
     private final Constants constants;
+    private final SecretKeyService secretKeyService;
+
 
     @Autowired
-    public JwtTokenService(Constants constants) {
+    public JwtTokenService(Constants constants, SecretKeyService secretKeyService) {
         this.constants = constants;
+        this.secretKeyService = secretKeyService;
     }
 
     public Map<String, String> generateJWToken(User user) {
-        Map<String, String> resultMap = new HashMap<>();
+        final Map<String, String> resultMap = new HashMap<>();
         resultMap.put("token", jwtsBuilder(user));
         return resultMap;
     }
@@ -40,7 +39,7 @@ public class JwtTokenService {
         claims.put("firstName", user.getFirstName());
         claims.put("lastName", user.getLastName());
 
-        SecretKey key = Keys.hmacShaKeyFor(constants.getApiSecretKey().getBytes(StandardCharsets.UTF_8));
+        SecretKey key = secretKeyService.generateSecretKey();
 
         return Jwts.builder()
                 .claims(claims)

@@ -10,5 +10,5 @@ spring:
 
 app:
   jwt:
-    apiSecretKey: purchaseListApi
+    secureKeyAlgorithm: HmacSHA512
     tokenValidity: 7200000

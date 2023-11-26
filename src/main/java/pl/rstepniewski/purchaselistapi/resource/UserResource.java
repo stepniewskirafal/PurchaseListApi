@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.rstepniewski.purchaselistapi.jwt.Constants;
 import pl.rstepniewski.purchaselistapi.domain.User;
 import pl.rstepniewski.purchaselistapi.jwt.JwtTokenService;
 import pl.rstepniewski.purchaselistapi.services.UserService;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -31,18 +29,14 @@ public class UserResource {
         User processedUser = userService.processUserRequestBody(userMap);
         userService.validateUser(processedUser);
 
-        Map<String, String> responce = new HashMap<>();
-        responce.put("Message", "LoggedIn successfully");
-        return new ResponseEntity<>(responce, HttpStatus.OK);
+        return new ResponseEntity<>(tokenService.generateJWToken(processedUser), HttpStatus.OK);
     }
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerUser(@RequestBody Map<String, Object> userMap){
         User processedUser = userService.processUserRequestBody(userMap);
         userService.registerUser(processedUser);
 
-        Map<String, String> responce = new HashMap<>();
-        responce.put("Message", "Registered successfully");
-        return new ResponseEntity<>(responce, HttpStatus.OK);
+        return new ResponseEntity<>(tokenService.generateJWToken(processedUser), HttpStatus.OK);
     }
 
 

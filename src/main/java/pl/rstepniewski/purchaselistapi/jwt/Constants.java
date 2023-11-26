@@ -6,22 +6,22 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "app.jwt")
 public class Constants {
-    private String apiSecretKey;
     private long tokenValidity;
+    private String secureKeyAlgorithm;
 
-    public void setApiSecretKey(String apiSecretKey) {
-        this.apiSecretKey = apiSecretKey;
+    public long getTokenValidity() {
+        return tokenValidity;
     }
 
     public void setTokenValidity(long tokenValidity) {
         this.tokenValidity = tokenValidity;
     }
 
-    public String getApiSecretKey() {
-        return apiSecretKey;
+    public String getSecureKeyAlgorithm() {
+        return secureKeyAlgorithm;
     }
 
-    public long getTokenValidity() {
-        return tokenValidity;
+    public void setSecureKeyAlgorithm(String secureKeyAlgorithm) {
+        this.secureKeyAlgorithm = secureKeyAlgorithm;
     }
 }
