@@ -7,3 +7,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+app:
+  jwt:
+    apiSecretKey: purchaseListApi
+    tokenValidity: 7200000

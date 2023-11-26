@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.rstepniewski.purchaselistapi.jwt.Constants;
 import pl.rstepniewski.purchaselistapi.domain.User;
+import pl.rstepniewski.purchaselistapi.jwt.JwtTokenService;
 import pl.rstepniewski.purchaselistapi.services.UserService;
 
 import java.util.HashMap;
@@ -17,9 +19,11 @@ import java.util.Map;
 public class UserResource {
 
     private final UserService userService;
+    private final JwtTokenService tokenService;
 
-    public UserResource(UserService userService) {
+    public UserResource(UserService userService, JwtTokenService tokenService) {
         this.userService = userService;
+        this.tokenService = tokenService;
     }
 
     @PostMapping("/login")
@@ -40,6 +44,9 @@ public class UserResource {
         responce.put("Message", "Registered successfully");
         return new ResponseEntity<>(responce, HttpStatus.OK);
     }
+
+
+
 
 
 }
