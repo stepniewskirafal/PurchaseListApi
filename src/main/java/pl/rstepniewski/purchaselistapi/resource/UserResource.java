@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.rstepniewski.purchaselistapi.domain.User;
-import pl.rstepniewski.purchaselistapi.jwt.JwtTokenService;
+import pl.rstepniewski.purchaselistapi.security.jwt.JwtTokenService;
 import pl.rstepniewski.purchaselistapi.services.UserService;
 
 import java.util.Map;

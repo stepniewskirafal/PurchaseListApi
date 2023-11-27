@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.passwordhash;
+package pl.rstepniewski.purchaselistapi.security.passwordhash;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.jwt;
+package pl.rstepniewski.purchaselistapi.security.jwt;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +9,15 @@ public class Constants {
     private long tokenValidity;
     private String secureKeyAlgorithm;
     private int secureKeyBitLength;
+    private String apiSecretKey;
+
+    public String getApiSecretKey() {
+        return apiSecretKey;
+    }
+
+    public void setApiSecretKey(String apiSecretKey) {
+        this.apiSecretKey = apiSecretKey;
+    }
 
     public long getTokenValidity() {
         return tokenValidity;

@@ -1,12 +1,14 @@
-package pl.rstepniewski.purchaselistapi.jwt;
+package pl.rstepniewski.purchaselistapi.security.jwt;
 
 import org.springframework.stereotype.Service;
 import pl.rstepniewski.purchaselistapi.exception.WrongAlgorithmException;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Base64;
 
 @Service
 public class SecretKeyService {
@@ -29,4 +31,13 @@ public class SecretKeyService {
         return keyGen.generateKey();
 
     }
+
+    public SecretKey getSecretKey() {
+        String apiSecretKey = constants.getApiSecretKey();
+        String encodedKey = Base64.getEncoder().encodeToString(apiSecretKey.getBytes());
+
+        byte[] decodedKey = Base64.getDecoder().decode(encodedKey);
+        return new SecretKeySpec(decodedKey, 0, decodedKey.length, constants.getSecureKeyAlgorithm());
+    }
+
 }

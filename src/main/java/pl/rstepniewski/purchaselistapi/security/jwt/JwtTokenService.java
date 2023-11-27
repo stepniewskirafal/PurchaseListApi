@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.jwt;
+package pl.rstepniewski.purchaselistapi.security.jwt;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class JwtTokenService {
         claims.put("firstName", user.getFirstName());
         claims.put("lastName", user.getLastName());
 
-        final SecretKey key = secretKeyService.generateSecretKey();
+        final SecretKey key = secretKeyService.getSecretKey();
 
         return Jwts.builder()
                 .claims(claims)

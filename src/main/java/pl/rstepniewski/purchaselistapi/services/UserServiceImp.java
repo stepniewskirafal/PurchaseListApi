@@ -2,7 +2,7 @@ package pl.rstepniewski.purchaselistapi.services;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import pl.rstepniewski.purchaselistapi.passwordhash.PasswordService;
+import pl.rstepniewski.purchaselistapi.security.passwordhash.PasswordService;
 import pl.rstepniewski.purchaselistapi.domain.User;
 import pl.rstepniewski.purchaselistapi.exception.EtAuthException;
 import pl.rstepniewski.purchaselistapi.repository.UserRepository;

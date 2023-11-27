@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.passwordhash;
+package pl.rstepniewski.purchaselistapi.security.passwordhash;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
