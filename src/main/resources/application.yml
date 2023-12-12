@@ -3,20 +3,14 @@ spring:
     url: jdbc:mysql://localhost:3306/purchaseApiDB?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
         format_sql: true
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
-
-app:
-  jwt:
-    secureKeyAlgorithm: HmacSHA512
-    secureKeyBitLength: 512
-    tokenValidity: 7200000
-    apiSecretKey: ApiSecretKeyVeryLongAndBoringWord26846132
