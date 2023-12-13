@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
+import pl.rstepniewski.purchaselistapi.model.token.TokenRepository;
 
 
 @Component
@@ -23,6 +23,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+    private final TokenRepository tokenRepository;
     @Override
   protected void doFilterInternal(
       								@NonNull HttpServletRequest request,
@@ -43,7 +44,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if( userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null){
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 
-            if(jwtService.isTokenValid(jwtToken, userDetails)){
+            var isTokenValid = tokenRepository.findByToken(jwtToken)
+                    .map(t-> !t.isExpired() && !t.isRevoked() )
+                    .orElse(false);
+            if(jwtService.isTokenValid(jwtToken, userDetails)
+                && isTokenValid){
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,

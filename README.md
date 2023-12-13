@@ -5,6 +5,7 @@ This project demonstrates the implementation of security using Spring Boot 3.0 a
 * User registration and login with JWT authentication
 * Password encryption using BCrypt
 * Role-based authorization with Spring Security
+* Logout process
 
 ## Technologies
 * Spring Boot 3.0

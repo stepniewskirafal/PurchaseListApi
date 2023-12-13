@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.user;
+package pl.rstepniewski.purchaselistapi.model.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.rstepniewski.purchaselistapi.model.token.Token;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 public class User implements UserDetails {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String firstname;
   private String lastname;
@@ -30,6 +31,10 @@ public class User implements UserDetails {
 
   @Enumerated(EnumType.STRING)
   private Role role;
+
+  @OneToMany(mappedBy = "user")
+  private List<Token> tokens;
+
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
