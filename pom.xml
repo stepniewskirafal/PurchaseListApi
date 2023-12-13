@@ -10,7 +10,7 @@
     </parent>
     <groupId>pl.rstepniewski</groupId>
     <artifactId>PurchaseListApi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0</version>
     <name>PurchaseListApi</name>
     <description>PurchaseListApi</description>
     <properties>
