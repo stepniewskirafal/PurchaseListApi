@@ -1,5 +1,9 @@
 package pl.rstepniewski.purchaselistapi.auth;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpHeaders;
 import pl.rstepniewski.purchaselistapi.config.JwtService;
 import pl.rstepniewski.purchaselistapi.model.token.Token;
 import pl.rstepniewski.purchaselistapi.model.token.TokenRepository;
@@ -13,6 +17,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
@@ -34,13 +40,15 @@ public class AuthenticationService {
                 .build();
         User savedUser = userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        var jwtRefreshToken  = jwtService.generateRefreshToken(user);
 
         revokeAllUserToken(savedUser);
         saveUserToken(savedUser, jwtToken);
 
         return AuthenticationResponse
                 .builder()
-                .token(jwtToken)
+                .accessToken(jwtToken)
+                .refreshToken(jwtRefreshToken)
                 .build();
     }
 
@@ -57,13 +65,15 @@ public class AuthenticationService {
                 .orElseThrow(() -> new UsernameNotFoundException("Couldn't find a user email: "+ request.getEmail()));
 
         var jwtToken = jwtService.generateToken(user);
+        var jwtRefreshToken  = jwtService.generateRefreshToken(user);
 
         revokeAllUserToken(user);
         saveUserToken(user,jwtToken);
 
         return AuthenticationResponse
                 .builder()
-                .token(jwtToken)
+                .accessToken(jwtToken)
+                .refreshToken(jwtRefreshToken)
                 .build();
     }
 
@@ -89,5 +99,36 @@ public class AuthenticationService {
         }
 
         tokenRepository.saveAll(validUserTokens);
+    }
+
+    public void refreshToken(
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+
+        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        final String refreshToken;
+        final String userEmail;
+        if(authHeader == null || !authHeader.startsWith("Bearer ")){
+            return;
+        }
+
+        refreshToken = authHeader.substring(7);
+        userEmail = jwtService.extractUsername(refreshToken);
+
+        if( userEmail != null){
+            var userDetails = this.userRepository.findUserByEmail(userEmail).orElseThrow();
+
+            if(jwtService.isTokenValid(refreshToken, userDetails)){
+                var accessToken = jwtService.generateToken(userDetails);
+                revokeAllUserToken(userDetails);
+                saveUserToken(userDetails, accessToken);
+                var authResponse = AuthenticationResponse
+                        .builder()
+                        .accessToken(accessToken)
+                        .refreshToken(refreshToken)
+                        .build();
+                new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+            }
+        }
     }
 }
