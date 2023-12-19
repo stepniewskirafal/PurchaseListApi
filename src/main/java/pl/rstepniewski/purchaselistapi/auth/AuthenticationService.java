@@ -101,14 +101,15 @@ public class AuthenticationService {
         tokenRepository.saveAll(validUserTokens);
     }
 
-    public AuthenticationResponse refreshToken(
-            HttpServletRequest request) {
-        AuthenticationResponse authenticationResponse = null;
+    public void refreshToken(
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String refreshToken;
         final String userEmail;
         if(authHeader == null || !authHeader.startsWith("Bearer ")){
-            return authenticationResponse;
+            return;
         }
 
         refreshToken = authHeader.substring(7);
@@ -121,13 +122,13 @@ public class AuthenticationService {
                 var accessToken = jwtService.generateToken(userDetails);
                 revokeAllUserToken(userDetails);
                 saveUserToken(userDetails, accessToken);
-                authenticationResponse = AuthenticationResponse
+                var authResponse = AuthenticationResponse
                         .builder()
                         .accessToken(accessToken)
                         .refreshToken(refreshToken)
                         .build();
+                new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
         }
-        return authenticationResponse;
     }
 }
