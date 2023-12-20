@@ -16,7 +16,7 @@ public class CategoryController {
     private final CategoryRepository categoryRepository;
 
     @GetMapping
-    public ResponseEntity<List<Category>> sayHello() {
+    public ResponseEntity<List<Category>> getAllCategories() {
         return ResponseEntity.ok(categoryRepository.findAll());
     }
 

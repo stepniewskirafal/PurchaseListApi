@@ -1,14 +1,13 @@
-package pl.rstepniewski.purchaselistapi.model.user;
+package pl.rstepniewski.purchaselistapi.security.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import pl.rstepniewski.purchaselistapi.model.token.Token;
+import pl.rstepniewski.purchaselistapi.security.roleperms.Role;
+import pl.rstepniewski.purchaselistapi.security.token.Token;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,22 +22,33 @@ public class User implements UserDetails {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+
   private Integer id;
+
+  @JsonProperty
   private String firstname;
+
+  @JsonProperty
   private String lastname;
+
+  @JsonProperty
   private String email;
+
+  @JsonIgnore
   private String password;
 
   @Enumerated(EnumType.STRING)
+  @JsonIgnore
   private Role role;
 
   @OneToMany(mappedBy = "user")
+  @ToString.Exclude
+  @JsonIgnore
   private List<Token> tokens;
-
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(role.name()));
+    return role.getAuthorities();
   }
 
   @Override
@@ -69,5 +79,16 @@ public class User implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", email='" + email + '\'' +
+            //", role=" + role +
+            '}';
   }
 }

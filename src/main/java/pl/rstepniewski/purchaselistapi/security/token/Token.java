@@ -1,11 +1,11 @@
-package pl.rstepniewski.purchaselistapi.model.token;
+package pl.rstepniewski.purchaselistapi.security.token;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.rstepniewski.purchaselistapi.model.user.User;
+import pl.rstepniewski.purchaselistapi.security.user.User;
 
 @Data
 @Builder
@@ -15,7 +15,7 @@ import pl.rstepniewski.purchaselistapi.model.user.User;
 public class Token {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String token;
     @Enumerated(EnumType.STRING)
