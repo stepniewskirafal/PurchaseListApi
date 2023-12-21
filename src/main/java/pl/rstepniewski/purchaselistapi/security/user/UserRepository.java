@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.user;
+package pl.rstepniewski.purchaselistapi.security.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

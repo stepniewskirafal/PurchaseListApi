@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.auth;
+package pl.rstepniewski.purchaselistapi.security.auth;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

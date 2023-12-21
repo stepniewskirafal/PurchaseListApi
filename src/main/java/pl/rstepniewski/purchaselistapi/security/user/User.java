@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.user;
+package pl.rstepniewski.purchaselistapi.security.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import pl.rstepniewski.purchaselistapi.token.Token;
+import pl.rstepniewski.purchaselistapi.security.token.Token;
 
 import java.util.Collection;
 import java.util.List;

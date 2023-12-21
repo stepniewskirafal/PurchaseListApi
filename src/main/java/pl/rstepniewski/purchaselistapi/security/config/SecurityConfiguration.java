@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.config;
+package pl.rstepniewski.purchaselistapi.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +15,8 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
-import static pl.rstepniewski.purchaselistapi.user.Permission.*;
-import static pl.rstepniewski.purchaselistapi.user.Role.*;
+import static pl.rstepniewski.purchaselistapi.security.user.Permission.*;
+import static pl.rstepniewski.purchaselistapi.security.user.Role.*;
 
 @Configuration
 @EnableWebSecurity

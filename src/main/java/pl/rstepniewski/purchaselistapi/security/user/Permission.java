@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.user;
+package pl.rstepniewski.purchaselistapi.security.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,11 +1,11 @@
-package pl.rstepniewski.purchaselistapi.token;
+package pl.rstepniewski.purchaselistapi.security.token;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.rstepniewski.purchaselistapi.user.User;
+import pl.rstepniewski.purchaselistapi.security.user.User;
 
 @Data
 @Builder

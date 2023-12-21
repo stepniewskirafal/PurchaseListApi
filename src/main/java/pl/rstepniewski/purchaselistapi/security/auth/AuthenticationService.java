@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.auth;
+package pl.rstepniewski.purchaselistapi.security.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,12 +9,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.rstepniewski.purchaselistapi.config.JwtService;
-import pl.rstepniewski.purchaselistapi.token.Token;
-import pl.rstepniewski.purchaselistapi.token.TokenRepository;
-import pl.rstepniewski.purchaselistapi.token.TokenType;
-import pl.rstepniewski.purchaselistapi.user.User;
-import pl.rstepniewski.purchaselistapi.user.UserRepository;
+import pl.rstepniewski.purchaselistapi.security.config.JwtService;
+import pl.rstepniewski.purchaselistapi.security.token.Token;
+import pl.rstepniewski.purchaselistapi.security.token.TokenRepository;
+import pl.rstepniewski.purchaselistapi.security.token.TokenType;
+import pl.rstepniewski.purchaselistapi.security.user.User;
+import pl.rstepniewski.purchaselistapi.security.user.UserRepository;
 
 import java.io.IOException;
 

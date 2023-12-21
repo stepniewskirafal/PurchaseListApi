@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.category;
+package pl.rstepniewski.purchaselistapi.model.category;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

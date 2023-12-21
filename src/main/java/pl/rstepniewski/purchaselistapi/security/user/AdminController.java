@@ -1,7 +1,6 @@
-package pl.rstepniewski.purchaselistapi.user;
+package pl.rstepniewski.purchaselistapi.security.user;
 
 import io.swagger.v3.oas.annotations.Hidden;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

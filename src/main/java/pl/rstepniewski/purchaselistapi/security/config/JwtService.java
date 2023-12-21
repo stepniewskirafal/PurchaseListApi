@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.config;
+package pl.rstepniewski.purchaselistapi.security.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

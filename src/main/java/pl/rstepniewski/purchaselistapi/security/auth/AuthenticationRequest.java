@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.auth;
+package pl.rstepniewski.purchaselistapi.security.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.config;
+package pl.rstepniewski.purchaselistapi.security.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;

@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.user;
+package pl.rstepniewski.purchaselistapi.security.user;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
@@ -7,8 +7,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.rstepniewski.purchaselistapi.category.Category;
-import pl.rstepniewski.purchaselistapi.category.CategoryRepository;
+import pl.rstepniewski.purchaselistapi.model.category.Category;
+import pl.rstepniewski.purchaselistapi.model.category.CategoryRepository;
 
 import java.util.List;
 

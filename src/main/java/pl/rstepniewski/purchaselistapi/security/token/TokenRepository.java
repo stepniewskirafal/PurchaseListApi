@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.token;
+package pl.rstepniewski.purchaselistapi.security.token;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

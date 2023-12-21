@@ -1,10 +1,10 @@
-package pl.rstepniewski.purchaselistapi.auth;
+package pl.rstepniewski.purchaselistapi.security.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.rstepniewski.purchaselistapi.user.Role;
+import pl.rstepniewski.purchaselistapi.security.user.Role;
 
 @Data
 @Builder

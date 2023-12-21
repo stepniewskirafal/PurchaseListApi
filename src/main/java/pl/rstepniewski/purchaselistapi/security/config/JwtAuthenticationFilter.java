@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.config;
+package pl.rstepniewski.purchaselistapi.security.config;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import pl.rstepniewski.purchaselistapi.token.TokenRepository;
+import pl.rstepniewski.purchaselistapi.security.token.TokenRepository;
 
 import java.io.IOException;
 

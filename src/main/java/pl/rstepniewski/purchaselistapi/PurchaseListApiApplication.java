@@ -4,10 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import pl.rstepniewski.purchaselistapi.auth.AuthenticationService;
-import pl.rstepniewski.purchaselistapi.auth.RegisterRequest;
+import pl.rstepniewski.purchaselistapi.security.auth.AuthenticationService;
+import pl.rstepniewski.purchaselistapi.security.auth.RegisterRequest;
 
-import static pl.rstepniewski.purchaselistapi.user.Role.*;
+import static pl.rstepniewski.purchaselistapi.security.user.Role.*;
 
 @SpringBootApplication
 public class PurchaseListApiApplication {
