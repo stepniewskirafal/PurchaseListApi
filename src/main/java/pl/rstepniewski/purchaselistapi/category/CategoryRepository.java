@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.model.category;
+package pl.rstepniewski.purchaselistapi.category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

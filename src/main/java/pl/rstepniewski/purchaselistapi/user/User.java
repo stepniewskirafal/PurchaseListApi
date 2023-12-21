@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.security.user;
+package pl.rstepniewski.purchaselistapi.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,8 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import pl.rstepniewski.purchaselistapi.security.roleperms.Role;
-import pl.rstepniewski.purchaselistapi.security.token.Token;
+import pl.rstepniewski.purchaselistapi.token.Token;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "registered_user")
+@Table(name = "_user")
 public class User implements UserDetails {
 
   @Id
@@ -79,16 +78,5 @@ public class User implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
-  }
-
-  @Override
-  public String toString() {
-    return "User{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            ", email='" + email + '\'' +
-            //", role=" + role +
-            '}';
   }
 }

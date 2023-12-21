@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.security.auth;
+package pl.rstepniewski.purchaselistapi.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -12,9 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationResponse {
 
-    @JsonProperty("access_token")
-    private String accessToken;
-
-    @JsonProperty("refresh_token")
-    private String refreshToken;
+  @JsonProperty("access_token")
+  private String accessToken;
+  @JsonProperty("refresh_token")
+  private String refreshToken;
 }

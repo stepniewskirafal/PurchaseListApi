@@ -1,11 +1,10 @@
-package pl.rstepniewski.purchaselistapi.security.config;
+package pl.rstepniewski.purchaselistapi.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -47,15 +46,16 @@ public class JwtService {
   }
 
   public String generateRefreshToken(
-          UserDetails userDetails
+      UserDetails userDetails
   ) {
     return buildToken(new HashMap<>(), userDetails, refreshExpiration);
   }
 
-  public String buildToken(Map<String, Object> extraClaims,
-                           UserDetails userDetails,
-                           long expiration
-    ){
+  private String buildToken(
+          Map<String, Object> extraClaims,
+          UserDetails userDetails,
+          long expiration
+  ) {
     return Jwts
             .builder()
             .setClaims(extraClaims)

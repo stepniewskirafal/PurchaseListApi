@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.security.auth;
+package pl.rstepniewski.purchaselistapi.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthenticationRequest {
-    private String email;
-    String password;
+
+  private String email;
+  String password;
 }

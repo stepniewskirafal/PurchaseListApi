@@ -1,4 +1,4 @@
-package pl.rstepniewski.purchaselistapi.model.category;
+package pl.rstepniewski.purchaselistapi.category;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
